@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Calibri, "Segoe UI", Arial, sans-serif;
+}
+
+@layer base {
+  :root {
+    --color-sidebar-navy: #10243A;
+    --color-deep-navy: #0B1728;
+    --color-primary-blue: #2457A7;
+    --color-hover-blue: #3169B5;
+    --color-teal: #168C83;
+    --color-main-bg: #F4F6F9;
+    --color-primary-text: #172536;
+    --color-secondary-text: #59697C;
+    --color-border: #D5DEE8;
+    --color-white: #FFFFFF;
+    --color-success: #16805D;
+    --color-warning: #C17B20;
+    --color-critical: #C43D43;
+  }
+
+  *, ::before, ::after {
+    font-family: Calibri, "Segoe UI", Arial, sans-serif;
+  }
+
+  body {
+    font-family: Calibri, "Segoe UI", Arial, sans-serif;
+    color: #172536;
+    background-color: #F4F6F9;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  code, pre, .font-mono {
+    font-family: Consolas, "Courier New", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom scrollbar for data tables and queues */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
