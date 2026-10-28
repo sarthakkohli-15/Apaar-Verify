@@ -2,23 +2,31 @@
 
 @theme {
   --font-sans: Calibri, "Segoe UI", Arial, sans-serif;
+  --color-brand-blue: #1673D1;
+  --color-brand-dark: #17324F;
+  --color-brand-light: #EAF4FF;
+  --color-brand-border: #DCE7F2;
+  --color-brand-bg: #F4F8FC;
 }
 
 @layer base {
   :root {
-    --color-sidebar-navy: #10243A;
-    --color-deep-navy: #0B1728;
-    --color-primary-blue: #2457A7;
-    --color-hover-blue: #3169B5;
-    --color-teal: #168C83;
-    --color-main-bg: #F4F6F9;
-    --color-primary-text: #172536;
-    --color-secondary-text: #59697C;
-    --color-border: #D5DEE8;
+    --color-sidebar-navy: #FFFFFF;
+    --color-sidebar-border: #DCE7F2;
+    --color-deep-navy: #17324F;
+    --color-primary-blue: #1673D1;
+    --color-hover-blue: #105CB0;
+    --color-light-blue: #EAF4FF;
+    --color-teal: #16845B;
+    --color-main-bg: #F4F8FC;
+    --color-primary-text: #17324F;
+    --color-secondary-text: #40566E;
+    --color-muted-text: #71849A;
+    --color-border: #DCE7F2;
     --color-white: #FFFFFF;
-    --color-success: #16805D;
-    --color-warning: #C17B20;
-    --color-critical: #C43D43;
+    --color-success: #16845B;
+    --color-warning: #B7791F;
+    --color-critical: #C53D45;
   }
 
   *, ::before, ::after {
@@ -27,8 +35,8 @@
 
   body {
     font-family: Calibri, "Segoe UI", Arial, sans-serif;
-    color: #172536;
-    background-color: #F4F6F9;
+    color: #17324F;
+    background-color: #F4F8FC;
     font-size: 14px;
     line-height: 1.5;
   }

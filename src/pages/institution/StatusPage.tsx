@@ -39,18 +39,18 @@ export const StatusPage: React.FC<{ navigate: (path: string) => void }> = ({ nav
 
   return (
     <div
-      className="min-h-screen bg-[#F4F6F9] text-[#172536] flex flex-col justify-between font-sans"
+      className="min-h-screen bg-[#F4F8FC] text-[#17324F] flex flex-col justify-between font-sans"
       style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}
     >
-      <header className="py-3 px-6 lg:px-12 border-b border-[#D5DEE8] bg-white flex items-center justify-between">
+      <header className="py-3 px-6 lg:px-12 border-b border-[#DCE7F2] bg-white flex items-center justify-between sticky top-0 z-30 shadow-2xs">
         <div onClick={() => navigate('/')} className="cursor-pointer">
           <ApaarLogo variant="dark" size="md" withSubtitle={true} />
         </div>
-        <div className="flex items-center gap-4 text-[13px]">
-          <button onClick={() => navigate('/institution/register')} className="text-[#59697C] hover:text-[#2457A7]">
+        <div className="flex items-center gap-4 text-[13.5px]">
+          <button onClick={() => navigate('/institution/register')} className="text-[#40566E] hover:text-[#1673D1] font-medium transition-colors cursor-pointer">
             New Institution Registration
           </button>
-          <button onClick={() => navigate('/login')} className="text-[#2457A7] font-semibold hover:underline">
+          <button onClick={() => navigate('/login')} className="text-[#1673D1] font-semibold hover:underline cursor-pointer">
             Portal Sign In →
           </button>
         </div>

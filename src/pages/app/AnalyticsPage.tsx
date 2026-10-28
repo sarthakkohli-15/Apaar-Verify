@@ -41,7 +41,7 @@ export const AnalyticsPage: React.FC<{ navigate: (path: string) => void }> = ({ 
 
         <button
           onClick={handleDownloadReport}
-          className="px-3.5 py-1.5 bg-[#10243A] hover:bg-[#0B1728] text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
+          className="px-3.5 py-1.5 bg-[#10243A] hover:bg-[#0B1728] text-white text-[13px] font-medium rounded-md transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer"
         >
           <Download className="w-3.5 h-3.5 text-[#168C83]" />
           <span>Export Analytics Report</span>
@@ -49,14 +49,14 @@ export const AnalyticsPage: React.FC<{ navigate: (path: string) => void }> = ({ 
       </div>
 
       {downloadNotice && (
-        <div className="p-3 bg-[#E8F5E9] border border-[#16805D]/30 rounded text-[13px] text-[#16805D] flex items-center gap-2">
+        <div className="p-3 bg-[#E8F5E9] border border-[#16805D]/30 rounded-md text-[13px] text-[#16805D] flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-[#16805D] shrink-0" />
           <span>{downloadNotice}</span>
         </div>
       )}
 
       {/* 4-KPI Shared Surface Strip (Anti-Boxification) */}
-      <div className="bg-white border border-[#D5DEE8] rounded shadow-xs overflow-hidden">
+      <div className="bg-white border border-[#D5DEE8] rounded-md shadow-xs overflow-hidden">
         <div className="grid grid-cols-1 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#D5DEE8]">
           <div className="p-4">
             <span className="text-[12px] text-[#59697C] font-semibold uppercase tracking-wide block mb-1">

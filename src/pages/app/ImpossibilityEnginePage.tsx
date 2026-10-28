@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { AnomalyAlert, GraphNode } from '../../types';
 import { SecurityBadge } from '../../components/common/SecurityBadge';
+import { Button } from '../../components/common/Button';
 import {
   Network,
   Info,
@@ -220,29 +221,31 @@ export const ImpossibilityEnginePage: React.FC<{ navigate: (path: string) => voi
   return (
     <div className="space-y-5" style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}>
       {/* Page Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#D5DEE8]">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#DCE7F2]">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
-              Module 1 — Impossibility Engine & Evidence Graph
+            <h1 className="text-[26px] font-semibold text-[#17324F] tracking-tight">
+              Impossibility Engine & Evidence Graph
             </h1>
-            <span className="text-xs font-semibold bg-[#FFEBEE] text-[#C43D43] px-2.5 py-0.5 rounded border border-[#C43D43]/30 font-mono">
-              AICTE Core Anomaly Engine
+            <span className="text-xs font-semibold bg-[#FFF0F0] text-[#C53D45] px-2.5 py-0.5 rounded-md border border-[#FCA5A5]/40 font-mono">
+              Core Anomaly Engine
             </span>
           </div>
-          <p className="text-[14px] text-[#59697C] mt-1">
+          <p className="text-[14px] text-[#40566E] mt-1">
             Deterministic detection of physical impossibilities (Haversine distance &gt;100 km), duplicate identity collisions, intake breaches, and fraud rings.
           </p>
         </div>
 
-        <button
+        <Button
+          variant="primary"
+          size="md"
+          loading={isScanning}
+          icon={<Network className="w-4 h-4" />}
+          iconPosition="left"
           onClick={handleRunScan}
-          disabled={isScanning}
-          className="px-3.5 py-1.5 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
         >
-          <Network className="w-4 h-4" />
-          <span>{isScanning ? 'Executing Rules R1-R4...' : 'Re-Run Anomaly Detection Engine'}</span>
-        </button>
+          {isScanning ? 'Executing Rules R1-R4...' : 'Run Anomaly Detection'}
+        </Button>
       </div>
 
       {/* Core Principle Callout */}
@@ -340,20 +343,23 @@ export const ImpossibilityEnginePage: React.FC<{ navigate: (path: string) => voi
               {/* Status and Action Buttons */}
               <div className="flex items-center gap-2">
                 {selectedAlert.status === 'OPEN' && (
-                  <button
+                  <Button
+                    variant="outline"
+                    size="xs"
                     onClick={() => updateAlertStatus(selectedAlert.id, 'INVESTIGATING')}
-                    className="px-3 py-1.5 bg-[#C17B20] hover:bg-[#a56717] text-white rounded text-[12px] font-medium transition-colors"
+                    className="border-[#B7791F] text-[#B7791F] hover:bg-[#FFF5DF]"
                   >
                     Mark Investigating
-                  </button>
+                  </Button>
                 )}
                 {selectedAlert.status !== 'RESOLVED' && (
-                  <button
+                  <Button
+                    variant="dark"
+                    size="xs"
                     onClick={() => setShowCloseModal(true)}
-                    className="px-3 py-1.5 bg-[#10243A] hover:bg-[#0B1728] text-white rounded text-[12px] font-medium transition-colors"
                   >
                     Close / Resolve Alert
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
@@ -453,13 +459,15 @@ export const ImpossibilityEnginePage: React.FC<{ navigate: (path: string) => voi
                   onChange={(e) => setNoteInput(e.target.value)}
                   className="flex-1 px-3 py-1.5 text-[13px] rounded border border-[#D5DEE8] bg-white text-[#172536] focus:border-[#2457A7] focus:outline-none"
                 />
-                <button
+                <Button
+                  variant="primary"
+                  size="sm"
                   type="submit"
-                  className="px-3.5 py-1.5 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13px] font-medium rounded flex items-center gap-1.5 transition-colors"
+                  icon={<Send className="w-3.5 h-3.5" />}
+                  iconPosition="left"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Log Note</span>
-                </button>
+                  Log Note
+                </Button>
               </form>
             </div>
           </div>
@@ -469,7 +477,7 @@ export const ImpossibilityEnginePage: React.FC<{ navigate: (path: string) => voi
       {/* Close Alert Reason Modal */}
       {showCloseModal && (
         <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded max-w-md w-full p-6 shadow-xl border border-[#D5DEE8]">
+          <div className="bg-white rounded-[4px] max-w-md w-full p-6 shadow-xl border border-[#D5DEE8]">
             <h3 className="text-[18px] font-semibold text-[#172536] mb-1">
               Close Investigation for {selectedAlert.id}
             </h3>
@@ -488,32 +496,32 @@ export const ImpossibilityEnginePage: React.FC<{ navigate: (path: string) => voi
                   value={closureReason}
                   onChange={(e) => setClosureReason(e.target.value)}
                   placeholder="e.g. Migration certificate verified; candidate withdrew from earlier institute on 2024-07-20."
-                  className="w-full p-2.5 text-[13px] rounded border border-[#D5DEE8] text-[#172536] focus:border-[#2457A7] focus:outline-none"
+                  className="w-full p-2.5 text-[13px] rounded-[4px] border border-[#D5DEE8] text-[#172536] focus:border-[#1673D1] focus:outline-none"
                 />
               </div>
 
               <div className="flex justify-end gap-2 pt-3 border-t border-[#D5DEE8]">
-                <button
-                  type="button"
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={() => setShowCloseModal(false)}
-                  className="px-3 py-1.5 text-[13px] text-[#59697C] hover:bg-[#F4F6F9] rounded border border-[#D5DEE8]"
                 >
                   Cancel
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={() => handleConfirmClose('FALSE_POSITIVE')}
-                  className="px-3 py-1.5 bg-white text-[#172536] border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[13px] font-medium rounded"
                 >
                   Dismiss as False Positive
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="dark"
+                  size="sm"
                   onClick={() => handleConfirmClose('RESOLVED')}
-                  className="px-4 py-1.5 bg-[#10243A] text-white text-[13px] font-medium rounded hover:bg-[#0B1728]"
                 >
                   Mark Case Resolved
-                </button>
+                </Button>
               </div>
             </div>
           </div>

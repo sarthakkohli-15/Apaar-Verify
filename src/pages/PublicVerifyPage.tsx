@@ -140,13 +140,13 @@ export const PublicVerifyPage: React.FC<{ navigate: (path: string) => void }> = 
           <div className="flex items-center gap-2">
             <button
               onClick={handleTamperToken}
-              className="px-3.5 py-1.5 bg-[#C43D43] hover:bg-[#b0353a] text-white rounded text-[13px] font-medium transition-colors"
+              className="px-3.5 py-1.5 bg-[#C43D43] hover:bg-[#b0353a] text-white rounded-md text-[13px] font-medium transition-colors cursor-pointer"
             >
               Simulate Claim Tampering
             </button>
             <button
               onClick={handleResetValid}
-              className="px-3.5 py-1.5 bg-white hover:bg-[#F4F6F9] text-[#172536] border border-[#D5DEE8] rounded text-[13px] font-medium transition-colors flex items-center gap-1"
+              className="px-3.5 py-1.5 bg-white hover:bg-[#F4F6F9] text-[#172536] border border-[#D5DEE8] rounded-md text-[13px] font-medium transition-colors flex items-center gap-1 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5 text-[#59697C]" />
               <span>Reset Valid</span>
@@ -157,18 +157,18 @@ export const PublicVerifyPage: React.FC<{ navigate: (path: string) => void }> = 
         {/* Split Grid: Left QR & Token | Right Verification Dossier */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
           {/* Left Column: QR Code & Token Payload */}
-          <div className="md:col-span-5 bg-white border border-[#D5DEE8] rounded shadow-xs p-5 flex flex-col items-center justify-between text-center space-y-4">
+          <div className="md:col-span-5 bg-white border border-[#D5DEE8] rounded-md shadow-xs p-5 flex flex-col items-center justify-between text-center space-y-4">
             <div>
               <span className="text-[12px] font-semibold text-[#59697C] uppercase tracking-wide block mb-3">
                 Verifiable QR Credential
               </span>
 
               {qrCodeDataUrl ? (
-                <div className="p-2.5 bg-white border border-[#D5DEE8] rounded shadow-xs inline-block">
+                <div className="p-2.5 bg-white border border-[#D5DEE8] rounded-md shadow-xs inline-block">
                   <img src={qrCodeDataUrl} alt="Signed Credential QR" className="w-44 h-44 mx-auto" />
                 </div>
               ) : (
-                <div className="w-44 h-44 bg-[#F4F6F9] rounded flex items-center justify-center text-[13px] text-[#8A9BA8]">
+                <div className="w-44 h-44 bg-[#F4F6F9] rounded-md flex items-center justify-center text-[13px] text-[#8A9BA8]">
                   Generating QR...
                 </div>
               )}
@@ -182,11 +182,11 @@ export const PublicVerifyPage: React.FC<{ navigate: (path: string) => void }> = 
                 rows={3}
                 value={token}
                 onChange={(e) => setToken(e.target.value)}
-                className="w-full p-2 text-[10px] font-mono rounded bg-[#10243A] text-[#A7F3D0] border border-[#D5DEE8] focus:outline-none"
+                className="w-full p-2 text-[10px] font-mono rounded-md bg-[#10243A] text-[#A7F3D0] border border-[#D5DEE8] focus:outline-none"
               />
               <button
                 onClick={handleVerifyCurrentToken}
-                className="w-full mt-1.5 py-1.5 bg-[#2457A7] text-white text-[13px] font-medium rounded hover:bg-[#3169B5] transition-colors"
+                className="w-full mt-1.5 py-1.5 bg-[#1673D1] text-white text-[13px] font-medium rounded-md hover:bg-[#105CB0] transition-colors cursor-pointer"
               >
                 Re-Verify Token Signature
               </button>

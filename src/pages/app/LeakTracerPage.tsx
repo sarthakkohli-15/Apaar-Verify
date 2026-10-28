@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { ExportRecord } from '../../types';
+import { Button } from '../../components/common/Button';
 import {
   Fingerprint,
   ArrowRight,
@@ -139,28 +140,30 @@ export const LeakTracerPage: React.FC<{ navigate: (path: string) => void }> = ({
   return (
     <div className="space-y-5" style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}>
       {/* Page Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#D5DEE8]">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#DCE7F2]">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
-              Module 2 — Forensic Data-Leak Tracer
+            <h1 className="text-[26px] font-semibold text-[#17324F] tracking-tight">
+              Canary Leak Tracer
             </h1>
-            <span className="text-xs font-semibold bg-[#E6F3F2] text-[#168C83] px-2.5 py-0.5 rounded border border-[#168C83]/30 font-mono">
+            <span className="text-xs font-semibold bg-[#EAF4FF] text-[#1673D1] px-2.5 py-0.5 rounded-md border border-[#C5DCFA] font-mono">
               Canary & Permutation Attribution
             </span>
           </div>
-          <p className="text-[14px] text-[#59697C] mt-1">
+          <p className="text-[14px] text-[#40566E] mt-1">
             Determine the originating account, session, and timestamp of leaked institutional exports using synthetic honeytoken canaries and row-order permutation fingerprints.
           </p>
         </div>
 
-        <button
+        <Button
+          variant="primary"
+          size="md"
+          icon={<ArrowRight className="w-3.5 h-3.5 text-white" />}
+          iconPosition="right"
           onClick={() => navigate('/app/students')}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#10243A] hover:bg-[#0B1728] text-white text-[13px] font-medium rounded transition-colors shadow-xs"
         >
-          <span>Generate New Tracked Export</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#168C83]" />
-        </button>
+          Generate New Tracked Export
+        </Button>
       </div>
 
       {/* Operational Note */}

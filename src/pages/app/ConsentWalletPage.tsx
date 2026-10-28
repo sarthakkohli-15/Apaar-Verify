@@ -100,7 +100,7 @@ export const ConsentWalletPage: React.FC<{ navigate: (path: string) => void }> =
                 <div className="shrink-0 flex items-center gap-2">
                   <button
                     onClick={() => handleToggleConsent(c)}
-                    className={`px-3 py-1.5 rounded text-[12px] font-medium transition-colors ${
+                    className={`px-3 py-1.5 rounded-md text-[12px] font-medium transition-colors cursor-pointer ${
                       isGranted
                         ? 'bg-white hover:bg-[#FFEBEE] text-[#C43D43] border border-[#D5DEE8]'
                         : 'bg-[#16805D] text-white hover:bg-[#136c4f]'
@@ -116,16 +116,16 @@ export const ConsentWalletPage: React.FC<{ navigate: (path: string) => void }> =
       </div>
 
       {/* Differential Privacy Simulation Section */}
-      <div className="bg-white border border-[#D5DEE8] rounded shadow-xs p-5 space-y-4">
+      <div className="bg-white border border-[#D5DEE8] rounded-md shadow-xs p-5 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#D5DEE8]">
           <div className="flex items-center gap-2">
-            <Sliders className="w-5 h-5 text-[#2457A7]" />
+            <Sliders className="w-5 h-5 text-[#1673D1]" />
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-[16px] font-semibold text-[#172536]">
                   Differential Privacy (DP DEMO) Aggregate Analytics
                 </h2>
-                <span className="text-[10px] font-mono font-semibold bg-[#FFF3E0] text-[#C17B20] px-2 py-0.5 rounded border border-[#C17B20]/30">
+                <span className="text-[10px] font-mono font-semibold bg-[#FFF3E0] text-[#C17B20] px-2 py-0.5 rounded-md border border-[#C17B20]/30">
                   DP PROTOTYPE
                 </span>
               </div>
@@ -137,7 +137,7 @@ export const ConsentWalletPage: React.FC<{ navigate: (path: string) => void }> =
 
           <button
             onClick={() => setDpEnabled(!dpEnabled)}
-            className={`px-3 py-1.5 rounded text-[12px] font-medium transition-colors border ${
+            className={`px-3 py-1.5 rounded-md text-[12px] font-medium transition-colors border cursor-pointer ${
               dpEnabled
                 ? 'bg-[#E8F5E9] text-[#16805D] border-[#16805D]/30'
                 : 'bg-white text-[#59697C] border-[#D5DEE8]'

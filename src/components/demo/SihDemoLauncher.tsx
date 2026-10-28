@@ -93,12 +93,12 @@ export const SihDemoLauncher: React.FC<{ currentPath: string; navigate: (path: s
   }
 
   return (
-    <div className="bg-[#0B1728] text-slate-200 border-b border-[#1B3552] px-4 py-1.5 text-[12.5px] flex flex-wrap items-center justify-between gap-3">
+    <div className="bg-[#17324F] text-slate-100 border-b border-[#122A42] px-4 py-1.5 text-[12.5px] flex flex-wrap items-center justify-between gap-3 shadow-xs">
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-1.5 text-white font-semibold">
-          <Sparkles className="w-3.5 h-3.5 text-[#C17B20]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
           <span>SIH 2026 Evaluation Tour</span>
-          <span className="text-slate-400 font-normal">· Problem ID 26263</span>
+          <span className="text-slate-300 font-normal">· Problem ID 26263</span>
         </div>
 
         {/* Scene Selector Strip */}
@@ -109,10 +109,10 @@ export const SihDemoLauncher: React.FC<{ currentPath: string; navigate: (path: s
               <button
                 key={scene.number}
                 onClick={() => handleSelectScene(scene.number)}
-                className={`px-2 py-0.5 rounded text-[12px] transition-colors whitespace-nowrap ${
+                className={`px-2.5 py-0.5 rounded-md text-[12px] transition-colors whitespace-nowrap cursor-pointer ${
                   isCurrent
-                    ? 'bg-[#2457A7] text-white font-medium'
-                    : 'text-slate-300 hover:bg-[#16304D] hover:text-white'
+                    ? 'bg-[#1673D1] text-white font-semibold shadow-2xs'
+                    : 'text-slate-200 hover:bg-[#122A42] hover:text-white'
                 }`}
                 title={scene.title}
               >
@@ -126,7 +126,7 @@ export const SihDemoLauncher: React.FC<{ currentPath: string; navigate: (path: s
       <div className="flex items-center gap-2">
         <button
           onClick={handleNextScene}
-          className="flex items-center gap-1 bg-[#2457A7] hover:bg-[#3169B5] text-white px-2.5 py-1 rounded text-[12px] font-medium transition-colors whitespace-nowrap"
+          className="flex items-center gap-1 bg-[#1673D1] hover:bg-[#105CB0] text-white px-3 py-1 rounded-md text-[12px] font-semibold transition-colors whitespace-nowrap cursor-pointer shadow-2xs"
         >
           <span>Next Scene</span>
           <ChevronRight className="w-3 h-3" />
@@ -134,7 +134,7 @@ export const SihDemoLauncher: React.FC<{ currentPath: string; navigate: (path: s
 
         <button
           onClick={resetDemoState}
-          className="flex items-center gap-1 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-[12px] transition-colors whitespace-nowrap"
+          className="flex items-center gap-1 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded-md text-[12px] transition-colors whitespace-nowrap cursor-pointer"
           title="Reset dataset and simulations to baseline"
         >
           <RotateCcw className="w-3 h-3" />
@@ -143,7 +143,7 @@ export const SihDemoLauncher: React.FC<{ currentPath: string; navigate: (path: s
 
         <button
           onClick={() => setIsMinimized(true)}
-          className="p-1 hover:bg-slate-800 text-slate-400 hover:text-slate-200 rounded"
+          className="p-1 hover:bg-slate-800 text-slate-400 hover:text-slate-200 rounded-md cursor-pointer"
           title="Minimize"
         >
           <X className="w-3.5 h-3.5" />

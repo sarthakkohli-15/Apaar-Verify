@@ -127,33 +127,33 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate('/app/corrections')}
-            className="px-3.5 py-1.5 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded transition-colors"
+            className="px-3.5 py-1.5 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded-md transition-colors cursor-pointer"
           >
             Correction Queue
           </button>
           <button
             onClick={handleDownloadTemplate}
-            className="px-3.5 py-1.5 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded transition-colors flex items-center gap-1.5"
+            className="px-3.5 py-1.5 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded-md transition-colors flex items-center gap-1.5 cursor-pointer"
           >
-            <Download className="w-3.5 h-3.5 text-[#2457A7]" />
+            <Download className="w-3.5 h-3.5 text-[#1673D1]" />
             <span>Download CSV Template</span>
           </button>
         </div>
       </div>
 
       {/* Step Progress Line */}
-      <div className="bg-white border border-[#D5DEE8] rounded p-3">
+      <div className="bg-white border border-[#D5DEE8] rounded-md p-3">
         <div className="grid grid-cols-4 divide-x divide-[#D5DEE8] text-center text-[13px]">
-          <div className={`py-1 font-medium ${currentStep === 1 ? 'text-[#2457A7]' : currentStep > 1 ? 'text-[#16805D]' : 'text-[#59697C]'}`}>
+          <div className={`py-1 font-medium ${currentStep === 1 ? 'text-[#1673D1]' : currentStep > 1 ? 'text-[#16805D]' : 'text-[#59697C]'}`}>
             1. Select File
           </div>
-          <div className={`py-1 font-medium ${currentStep === 2 ? 'text-[#2457A7]' : currentStep > 2 ? 'text-[#16805D]' : 'text-[#59697C]'}`}>
+          <div className={`py-1 font-medium ${currentStep === 2 ? 'text-[#1673D1]' : currentStep > 2 ? 'text-[#16805D]' : 'text-[#59697C]'}`}>
             2. Schema Mapping
           </div>
-          <div className={`py-1 font-medium ${currentStep === 3 ? 'text-[#2457A7]' : currentStep > 3 ? 'text-[#16805D]' : 'text-[#59697C]'}`}>
+          <div className={`py-1 font-medium ${currentStep === 3 ? 'text-[#1673D1]' : currentStep > 3 ? 'text-[#16805D]' : 'text-[#59697C]'}`}>
             3. Validation Report
           </div>
-          <div className={`py-1 font-medium ${currentStep === 4 ? 'text-[#2457A7]' : 'text-[#59697C]'}`}>
+          <div className={`py-1 font-medium ${currentStep === 4 ? 'text-[#1673D1]' : 'text-[#59697C]'}`}>
             4. Commit & Audit
           </div>
         </div>
@@ -161,9 +161,9 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
 
       {/* Step 1: File Selection */}
       {currentStep === 1 && (
-        <div className="bg-white border border-[#D5DEE8] rounded p-6 space-y-5">
-          <div className="border border-dashed border-[#D5DEE8] rounded p-8 text-center bg-[#F4F6F9]">
-            <UploadCloud className="w-8 h-8 text-[#2457A7] mx-auto mb-2" />
+        <div className="bg-white border border-[#D5DEE8] rounded-md p-6 space-y-5">
+          <div className="border border-dashed border-[#D5DEE8] rounded-md p-8 text-center bg-[#F4F6F9]">
+            <UploadCloud className="w-8 h-8 text-[#1673D1] mx-auto mb-2" />
             <h3 className="text-[16px] font-semibold text-[#172536]">Select Institutional Admissions CSV</h3>
             <p className="text-[13px] text-[#59697C] mt-1 max-w-sm mx-auto">
               File must contain student APAAR IDs, names, dates of birth, course IDs, and admission dates.
@@ -172,14 +172,14 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={handleLoadCleanSample}
-                className="px-3 py-1.5 bg-white border border-[#D5DEE8] hover:bg-slate-50 text-[13px] font-medium rounded text-[#172536] transition-colors"
+                className="px-3 py-1.5 bg-white border border-[#D5DEE8] hover:bg-slate-50 text-[13px] font-medium rounded-md text-[#172536] transition-colors cursor-pointer"
               >
                 Load Clean Sample (4 records)
               </button>
 
               <button
                 onClick={handleLoadDirtySample}
-                className="px-3 py-1.5 bg-white border border-[#C17B20] text-[#C17B20] hover:bg-amber-50 text-[13px] font-medium rounded transition-colors"
+                className="px-3 py-1.5 bg-white border border-[#C17B20] text-[#C17B20] hover:bg-amber-50 text-[13px] font-medium rounded-md transition-colors cursor-pointer"
               >
                 Load Anomaly & Formula Injection Test (5 records)
               </button>
@@ -187,14 +187,14 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
           </div>
 
           {selectedFile && (
-            <div className="p-3.5 bg-[#F4F6F9] border border-[#D5DEE8] rounded flex items-center justify-between text-[13.5px]">
+            <div className="p-3.5 bg-[#F4F6F9] border border-[#D5DEE8] rounded-md flex items-center justify-between text-[13.5px]">
               <div>
                 <span className="font-semibold text-[#172536]">{selectedFile.name}</span>
                 <span className="text-[#59697C] ml-2 text-[12.5px] font-mono">({selectedFile.rowCount} records · {selectedFile.size})</span>
               </div>
               <button
                 onClick={() => setCurrentStep(2)}
-                className="px-4 py-1.5 bg-[#2457A7] hover:bg-[#3169B5] text-white font-medium rounded text-[13px] flex items-center gap-1.5"
+                className="px-4 py-1.5 bg-[#1673D1] hover:bg-[#105CB0] text-white font-medium rounded-md text-[13px] flex items-center gap-1.5 cursor-pointer shadow-xs"
               >
                 <span>Continue to Mapping</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -252,13 +252,13 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
           <div className="flex justify-between pt-2">
             <button
               onClick={() => setCurrentStep(1)}
-              className="px-3.5 py-1.5 text-[13px] text-[#59697C] hover:bg-slate-100 rounded"
+              className="px-3.5 py-1.5 text-[13px] text-[#59697C] hover:bg-slate-100 rounded-md cursor-pointer"
             >
               Back
             </button>
             <button
               onClick={handleRunValidation}
-              className="px-4 py-2 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13.5px] font-medium rounded flex items-center gap-1.5"
+              className="px-4 py-2 bg-[#1673D1] hover:bg-[#105CB0] text-white text-[13.5px] font-medium rounded-md flex items-center gap-1.5 cursor-pointer shadow-xs"
             >
               <span>Run Validation Engine</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -269,14 +269,14 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
 
       {/* Step 3: Validation Summary Table (No separate card per rule) */}
       {currentStep === 3 && validationResult && (
-        <div className="bg-white border border-[#D5DEE8] rounded p-6 space-y-4">
+        <div className="bg-white border border-[#D5DEE8] rounded-md p-6 space-y-4">
           <div className="pb-3 border-b border-[#D5DEE8]">
             <h2 className="text-[18px] font-semibold text-[#172536]">Validation Summary Report</h2>
             <p className="text-[13px] text-[#59697C]">Ingestion checks for {parsedRows.length} incoming records</p>
           </div>
 
           {/* Unified Summary Table */}
-          <div className="overflow-x-auto border border-[#D5DEE8] rounded">
+          <div className="overflow-x-auto border border-[#D5DEE8] rounded-md">
             <table className="w-full text-left text-[13.5px]">
               <thead className="bg-[#F4F6F9] border-b border-[#D5DEE8] text-[#59697C] text-[13px]">
                 <tr>
@@ -317,13 +317,13 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
           <div className="flex justify-between pt-2">
             <button
               onClick={() => setCurrentStep(2)}
-              className="px-3.5 py-1.5 text-[13px] text-[#59697C] hover:bg-slate-100 rounded"
+              className="px-3.5 py-1.5 text-[13px] text-[#59697C] hover:bg-slate-100 rounded-md cursor-pointer"
             >
               Back
             </button>
             <button
               onClick={handleCommit}
-              className="px-4 py-2 bg-[#10243A] hover:bg-[#0B1728] text-white text-[13.5px] font-medium rounded flex items-center gap-1.5"
+              className="px-4 py-2 bg-[#10243A] hover:bg-[#0B1728] text-white text-[13.5px] font-medium rounded-md flex items-center gap-1.5 cursor-pointer shadow-xs"
             >
               <span>Commit Valid Records to AICTE Repository</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -334,7 +334,7 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
 
       {/* Step 4: Commit Report */}
       {currentStep === 4 && commitResult && (
-        <div className="bg-white border border-[#D5DEE8] rounded p-6 space-y-4">
+        <div className="bg-white border border-[#D5DEE8] rounded-md p-6 space-y-4">
           <div className="flex items-center gap-2 text-[#16805D]">
             <CheckCircle2 className="w-5 h-5" />
             <h2 className="text-[18px] font-semibold text-[#172536]">Batch Ingestion Committed</h2>
@@ -343,7 +343,7 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
             Valid records have been committed with cryptographic enrolment events and logged in the append-only audit ledger.
           </p>
 
-          <div className="p-4 bg-[#F4F6F9] border border-[#D5DEE8] rounded text-[13px] space-y-1 font-mono">
+          <div className="p-4 bg-[#F4F6F9] border border-[#D5DEE8] rounded-md text-[13px] space-y-1 font-mono">
             <div className="flex justify-between">
               <span className="text-[#59697C] font-sans">Accepted Records:</span>
               <span className="font-semibold text-[#16805D]">{commitResult.accepted}</span>
@@ -361,19 +361,19 @@ export const UploadsPage: React.FC<{ navigate: (path: string) => void }> = ({ na
           <div className="pt-2 flex gap-3">
             <button
               onClick={() => navigate('/app/corrections')}
-              className="px-4 py-2 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13.5px] font-medium rounded"
+              className="px-4 py-2 bg-[#1673D1] hover:bg-[#105CB0] text-white text-[13.5px] font-medium rounded-md cursor-pointer shadow-xs"
             >
               Open Correction Queue ({commitResult.correctionsAdded})
             </button>
             <button
               onClick={() => navigate('/app/students')}
-              className="px-4 py-2 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded"
+              className="px-4 py-2 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded-md cursor-pointer"
             >
               View Student Registry
             </button>
             <button
               onClick={resetWizard}
-              className="px-3.5 py-2 text-[13.5px] text-[#59697C] hover:bg-slate-100 rounded flex items-center gap-1"
+              className="px-3.5 py-2 text-[13.5px] text-[#59697C] hover:bg-slate-100 rounded-md flex items-center gap-1 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Upload Another</span>

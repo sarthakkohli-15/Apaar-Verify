@@ -88,11 +88,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
 
   return (
     <div
-      className="min-h-screen bg-[#F4F6F9] text-[#172536] flex flex-col justify-between"
+      className="min-h-screen bg-[#F4F8FC] text-[#17324F] flex flex-col justify-between"
       style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}
     >
       {/* Header */}
-      <div className="py-3 px-6 lg:px-12 border-b border-[#D5DEE8] bg-white flex items-center justify-between">
+      <div className="py-3 px-6 lg:px-12 border-b border-[#DCE7F2] bg-white flex items-center justify-between sticky top-0 z-30 shadow-2xs">
         <div
           onClick={() => navigate('/')}
           className="cursor-pointer"
@@ -101,23 +101,23 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
         </div>
         <button
           onClick={() => navigate('/')}
-          className="text-[13px] text-[#59697C] hover:text-[#172536] transition-colors"
+          className="text-[13.5px] text-[#40566E] hover:text-[#1673D1] font-medium transition-colors cursor-pointer"
         >
-          ← Back to Cover Page
+          ← Back to Home
         </button>
       </div>
 
       {/* Main Login Card */}
       <div className="flex-1 flex items-center justify-center p-4 sm:p-8">
-        <div className="w-full max-w-md bg-white border border-[#DCE3EB] rounded-xl shadow-xs p-6 sm:p-8">
+        <div className="w-full max-w-md bg-white border border-[#DCE7F2] rounded-2xl shadow-xs p-6 sm:p-8">
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#10243A]/5 border border-[#10243A]/10 text-[#10243A] mb-3">
-              <Lock className="w-6 h-6 text-[#2457A7]" />
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#EAF4FF] border border-[#C5DCFA] text-[#1673D1] mb-3">
+              <Lock className="w-6 h-6 text-[#1673D1]" />
             </div>
-            <h1 className="text-xl font-extrabold text-[#10243A] tracking-tight">
+            <h1 className="text-2xl font-bold text-[#17324F] tracking-tight">
               {step === 'CREDENTIALS' ? 'Institutional Sign In' : 'Mandatory Two-Factor Auth'}
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-[13px] text-[#40566E] mt-1">
               {step === 'CREDENTIALS'
                 ? 'Role-based access to the AICTE student data integrity console'
                 : 'Enter the 6-digit TOTP code from your registered authenticator app'}
@@ -125,8 +125,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+            <div className="mb-4 p-3 rounded-lg bg-[#FFF0F0] border border-[#FCA5A5] text-[12.5px] text-[#C53D45] flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-[#C53D45] shrink-0" />
               <span>{error}</span>
             </div>
           )}
@@ -134,17 +134,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
           {step === 'CREDENTIALS' ? (
             <form onSubmit={handleCredentialsSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-[12.5px] font-semibold text-[#17324F] mb-1">
                   Institutional Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                  <Mail className="w-4 h-4 text-[#71849A] absolute left-3 top-2.5" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#DCE3EB] focus:outline-none focus:ring-1 focus:ring-[#2457A7] focus:border-[#2457A7] bg-white text-slate-900"
+                    className="w-full pl-9 pr-3 py-2 text-[13px] rounded-lg border border-[#DCE7F2] focus:outline-none focus:ring-1 focus:ring-[#1673D1] focus:border-[#1673D1] bg-white text-[#17324F]"
                     placeholder="officer@aicte-india.org"
                   />
                 </div>
@@ -152,17 +152,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="text-xs font-semibold text-slate-700">Password</label>
-                  <span className="text-[11px] text-slate-400">Argon2id Encrypted</span>
+                  <label className="text-[12.5px] font-semibold text-[#17324F]">Password</label>
+                  <span className="text-[11px] text-[#71849A]">Argon2id Encrypted</span>
                 </div>
                 <div className="relative">
-                  <KeyRound className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                  <KeyRound className="w-4 h-4 text-[#71849A] absolute left-3 top-2.5" />
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#DCE3EB] focus:outline-none focus:ring-1 focus:ring-[#2457A7] focus:border-[#2457A7] bg-white text-slate-900"
+                    className="w-full pl-9 pr-3 py-2 text-[13px] rounded-lg border border-[#DCE7F2] focus:outline-none focus:ring-1 focus:ring-[#1673D1] focus:border-[#1673D1] bg-white text-[#17324F]"
                     placeholder="••••••••••••"
                   />
                 </div>
@@ -171,14 +171,14 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full mt-2 py-2.5 px-4 bg-[#10243A] hover:bg-[#0B1728] text-white rounded-lg text-xs font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                className="w-full mt-2 py-2.5 px-4 bg-[#1673D1] hover:bg-[#105CB0] text-white rounded-lg text-[13.5px] font-semibold transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
               >
                 {isLoading ? (
                   <span>Authenticating...</span>
                 ) : (
                   <>
                     <span>Proceed to Verification</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#E06D10]" />
+                    <ArrowRight className="w-4 h-4" />
                   </>
                 )}
               </button>
@@ -229,9 +229,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
           )}
 
           {/* Quick Preset Selector for SIH Judges */}
-          <div className="mt-8 pt-6 border-t border-[#DCE3EB]">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 mb-2.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#E06D10]" />
+          <div className="mt-8 pt-6 border-t border-[#DCE7F2]">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#17324F] mb-2.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#1673D1]" />
               <span>Select Preset Role for Live SIH Judging</span>
             </div>
 
@@ -241,18 +241,18 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
                 onClick={() =>
                   handleDemoPresetSelect('AICTE_ADMIN', 'aicte.admin@aicte-india.org')
                 }
-                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between ${
+                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between cursor-pointer ${
                   selectedRole === 'AICTE_ADMIN'
-                    ? 'border-[#2457A7] bg-[#2457A7]/5 font-semibold text-[#10243A]'
-                    : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+                    ? 'border-[#1673D1] bg-[#EAF4FF] font-semibold text-[#1673D1]'
+                    : 'border-[#DCE7F2] hover:bg-[#F4F8FC] text-[#40566E]'
                 }`}
               >
                 <div>
                   <span className="block font-semibold">AICTE Central Officer</span>
-                  <span className="text-[10px] text-slate-500">aicte.admin@aicte-india.org · Full Overseer</span>
+                  <span className="text-[10.5px] text-[#71849A]">aicte.admin@aicte-india.org · Full Overseer</span>
                 </div>
-                <span className="text-[10px] bg-blue-100 text-[#2457A7] px-1.5 py-0.5 rounded font-mono">
-                  MFA Required
+                <span className="text-[10px] bg-[#EAF4FF] text-[#1673D1] px-1.5 py-0.5 rounded font-mono font-semibold">
+                  MFA Enforced
                 </span>
               </button>
 
@@ -261,17 +261,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
                 onClick={() =>
                   handleDemoPresetSelect('COLLEGE_ADMIN', 'admin@dit-delhi.ac.in', 'inst-01')
                 }
-                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between ${
+                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between cursor-pointer ${
                   selectedRole === 'COLLEGE_ADMIN' && targetInstitutionId === 'inst-01'
-                    ? 'border-[#2457A7] bg-[#2457A7]/5 font-semibold text-[#10243A]'
-                    : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+                    ? 'border-[#1673D1] bg-[#EAF4FF] font-semibold text-[#1673D1]'
+                    : 'border-[#DCE7F2] hover:bg-[#F4F8FC] text-[#40566E]'
                 }`}
               >
                 <div>
                   <span className="block font-semibold">Delhi Inst of Tech Admin</span>
-                  <span className="text-[10px] text-slate-500">admin@dit-delhi.ac.in · Tenant Scoped</span>
+                  <span className="text-[10.5px] text-[#71849A]">admin@dit-delhi.ac.in · Tenant Scoped</span>
                 </div>
-                <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-mono">
+                <span className="text-[10px] bg-[#F4F8FC] text-[#40566E] px-1.5 py-0.5 rounded font-mono font-medium">
                   College Admin
                 </span>
               </button>
@@ -281,17 +281,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
                 onClick={() =>
                   handleDemoPresetSelect('VERIFIER', 'verifier@techhire.org')
                 }
-                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between ${
+                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between cursor-pointer ${
                   selectedRole === 'VERIFIER'
-                    ? 'border-[#2457A7] bg-[#2457A7]/5 font-semibold text-[#10243A]'
-                    : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+                    ? 'border-[#1673D1] bg-[#EAF4FF] font-semibold text-[#1673D1]'
+                    : 'border-[#DCE7F2] hover:bg-[#F4F8FC] text-[#40566E]'
                 }`}
               >
                 <div>
                   <span className="block font-semibold">Third-Party Employer / Verifier</span>
-                  <span className="text-[10px] text-slate-500">verifier@techhire.org · Zero PII Access</span>
+                  <span className="text-[10.5px] text-[#71849A]">verifier@techhire.org · Zero PII Access</span>
                 </div>
-                <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-mono">
+                <span className="text-[10px] bg-[#F4F8FC] text-[#40566E] px-1.5 py-0.5 rounded font-mono font-medium">
                   Public Verifier
                 </span>
               </button>
@@ -301,17 +301,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
                 onClick={() =>
                   handleDemoPresetSelect('STUDENT', 'sarthak.sharma@student.ac.in')
                 }
-                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between ${
+                className={`p-2 rounded-lg border text-left transition-colors flex items-center justify-between cursor-pointer ${
                   selectedRole === 'STUDENT'
-                    ? 'border-[#2457A7] bg-[#2457A7]/5 font-semibold text-[#10243A]'
-                    : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+                    ? 'border-[#1673D1] bg-[#EAF4FF] font-semibold text-[#1673D1]'
+                    : 'border-[#DCE7F2] hover:bg-[#F4F8FC] text-[#40566E]'
                 }`}
               >
                 <div>
                   <span className="block font-semibold">Student (Sarthak Sharma)</span>
-                  <span className="text-[10px] text-slate-500">sarthak.sharma@student.ac.in · Consent Wallet</span>
+                  <span className="text-[10.5px] text-[#71849A]">sarthak.sharma@student.ac.in · Consent Wallet</span>
                 </div>
-                <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-mono">
+                <span className="text-[10px] bg-[#F4F8FC] text-[#40566E] px-1.5 py-0.5 rounded font-mono font-medium">
                   Student Owner
                 </span>
               </button>
@@ -321,7 +321,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ navigate }) => {
       </div>
 
       {/* Footer */}
-      <div className="py-4 px-6 border-t border-[#DCE3EB] bg-white text-center text-xs text-slate-400">
+      <div className="py-4 px-6 border-t border-[#DCE7F2] bg-white text-center text-xs text-[#71849A]">
         AICTE Smart India Hackathon 2026 Prototype · Protected by TLS 1.3 & SHA-256 Audit Logs
       </div>
     </div>

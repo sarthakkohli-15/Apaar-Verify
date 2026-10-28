@@ -94,18 +94,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
 
   return (
     <aside
-      className={`bg-[#10243A] text-slate-300 flex flex-col justify-between border-r border-[#1B3552] transition-all duration-150 select-none ${
+      className={`bg-white text-[#17324F] flex flex-col justify-between border-r border-[#DCE7F2] transition-all duration-150 select-none ${
         collapsed ? 'w-16' : 'w-60'
-      } shrink-0 h-screen sticky top-0 z-30`}
+      } shrink-0 h-screen sticky top-0 z-30 shadow-2xs`}
+      style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}
     >
       <div>
         {/* Brand Lockup */}
         <div
           onClick={() => navigate('/')}
-          className="h-14 flex items-center px-3 border-b border-[#1B3552] bg-[#0B1728] cursor-pointer hover:bg-[#10243A] transition-colors"
+          className="h-16 flex items-center px-3.5 border-b border-[#DCE7F2] bg-white cursor-pointer hover:bg-[#F4F8FC] transition-colors"
         >
           <ApaarLogo
-            variant="light"
+            variant="dark"
             size="sm"
             iconOnly={collapsed}
             withSubtitle={!collapsed}
@@ -113,7 +114,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
         </div>
 
         {/* Navigation Groups */}
-        <div className="py-2 overflow-y-auto max-h-[calc(100vh-125px)] space-y-3 px-2">
+        <div className="py-3 overflow-y-auto max-h-[calc(100vh-135px)] space-y-4 px-2.5">
           {navSections.map((section) => {
             const visibleItems = section.items.filter(item => item.roles.includes(currentUser.role));
             if (visibleItems.length === 0) return null;
@@ -121,13 +122,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
             return (
               <div key={section.heading}>
                 {!collapsed && (
-                  <div className="px-2.5 pb-1 pt-1 text-[11px] font-semibold tracking-wider text-slate-400">
+                  <div className="px-2.5 pb-1 pt-1 text-[11px] font-bold tracking-wider text-[#71849A] uppercase">
                     {section.heading}
                   </div>
                 )}
                 <div className="space-y-0.5">
                   {visibleItems.map((item, idx) => {
-                    // For active check, exact match or match on primary path
                     const isActive = currentPath === item.path;
                     const Icon = item.icon;
                     return (
@@ -135,21 +135,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
                         key={`${item.path}-${idx}`}
                         onClick={() => navigate(item.path)}
                         title={collapsed ? item.label : undefined}
-                        className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded text-[13.5px] font-normal transition-colors relative ${
+                        className={`w-full flex items-center justify-between px-2.5 py-2 rounded-md text-[13.5px] font-medium transition-all duration-150 cursor-pointer ${
                           isActive
-                            ? 'bg-[#1D3B5C] text-white font-medium'
-                            : 'text-slate-300 hover:bg-[#16304D] hover:text-white'
+                            ? 'bg-[#EAF4FF] text-[#1673D1] font-semibold shadow-2xs'
+                            : 'text-[#40566E] hover:bg-[#F4F8FC] hover:text-[#17324F]'
                         }`}
                       >
-                        {isActive && (
-                          <span className="absolute left-0 top-1 bottom-1 w-1 bg-[#2457A7] rounded-r" />
-                        )}
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#3B82F6]' : 'text-slate-400'}`} />
+                          <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#1673D1]' : 'text-[#71849A]'}`} />
                           {!collapsed && <span className="truncate">{item.label}</span>}
                         </div>
                         {!collapsed && item.badge && (
-                          <span className="text-[11px] font-semibold text-white bg-[#C43D43] px-1.5 py-0.2 rounded">
+                          <span className="text-[11px] font-bold text-white bg-[#C53D45] px-1.5 py-0.2 rounded font-mono">
                             {item.badge}
                           </span>
                         )}
@@ -164,44 +161,44 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
       </div>
 
       {/* Role Switcher & User Profile */}
-      <div className="p-2.5 border-t border-[#1B3552] bg-[#0B1728] relative text-xs">
+      <div className="p-2.5 border-t border-[#DCE7F2] bg-[#F8FAFC] relative text-xs">
         <button
           onClick={() => setShowRoleMenu(!showRoleMenu)}
-          className="w-full flex items-center justify-between p-2 rounded hover:bg-[#16304D] transition-colors text-left"
+          className="w-full flex items-center justify-between p-2 rounded-md hover:bg-white border border-transparent hover:border-[#DCE7F2] transition-colors text-left cursor-pointer"
         >
           <div className="flex items-center gap-2 min-w-0">
-            <div className="w-7 h-7 rounded bg-[#2457A7] text-white flex items-center justify-center font-semibold text-xs shrink-0">
+            <div className="w-7 h-7 rounded-full bg-[#1673D1] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
               {currentUser.avatar || 'US'}
             </div>
             {!collapsed && (
               <div className="min-w-0">
-                <div className="font-semibold text-white text-[13px] truncate">{currentUser.fullName}</div>
-                <div className="text-[11px] text-slate-400 truncate">
+                <div className="font-bold text-[#17324F] text-[13px] truncate">{currentUser.fullName}</div>
+                <div className="text-[11px] text-[#71849A] truncate font-medium">
                   {currentUser.role.replace('_', ' ')}
                 </div>
               </div>
             )}
           </div>
-          {!collapsed && <ChevronDown className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
+          {!collapsed && <ChevronDown className="w-3.5 h-3.5 text-[#71849A] shrink-0" />}
         </button>
 
         {showRoleMenu && (
-          <div className="absolute bottom-14 left-2 right-2 bg-[#10243A] border border-[#2457A7] rounded shadow-lg p-2 z-50 text-xs">
-            <div className="text-[11px] font-semibold text-slate-400 px-2 py-1">
-              Switch Test Role
+          <div className="absolute bottom-14 left-2 right-2 bg-white border border-[#DCE7F2] rounded-md shadow-lg p-2 z-50 text-xs space-y-1">
+            <div className="text-[11px] font-bold text-[#71849A] uppercase tracking-wider px-2 py-1">
+              Switch Test Role (SIH Judging)
             </div>
-            <div className="space-y-0.5 mt-1">
+            <div className="space-y-0.5">
               <button
                 onClick={() => {
                   switchUser('AICTE_ADMIN');
                   setShowRoleMenu(false);
                 }}
-                className={`w-full text-left px-2 py-1.5 rounded hover:bg-[#1B3552] ${
-                  currentUser.role === 'AICTE_ADMIN' ? 'bg-[#2457A7] text-white font-medium' : 'text-slate-200'
+                className={`w-full text-left px-2.5 py-1.5 rounded-md transition-colors cursor-pointer ${
+                  currentUser.role === 'AICTE_ADMIN' ? 'bg-[#EAF4FF] text-[#1673D1] font-semibold' : 'text-[#40566E] hover:bg-[#F4F8FC]'
                 }`}
               >
-                <div>AICTE Central Officer</div>
-                <div className="text-[11px] text-slate-400">Full platform oversight</div>
+                <div className="font-semibold">AICTE Central Officer</div>
+                <div className="text-[10.5px] text-[#71849A]">Full platform oversight</div>
               </button>
 
               <button
@@ -209,14 +206,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
                   switchUser('COLLEGE_ADMIN', 'inst-01');
                   setShowRoleMenu(false);
                 }}
-                className={`w-full text-left px-2 py-1.5 rounded hover:bg-[#1B3552] ${
+                className={`w-full text-left px-2.5 py-1.5 rounded-md transition-colors cursor-pointer ${
                   currentUser.role === 'COLLEGE_ADMIN' && currentUser.institutionId === 'inst-01'
-                    ? 'bg-[#2457A7] text-white font-medium'
-                    : 'text-slate-200'
+                    ? 'bg-[#EAF4FF] text-[#1673D1] font-semibold'
+                    : 'text-[#40566E] hover:bg-[#F4F8FC]'
                 }`}
               >
-                <div>Delhi Institute Admin</div>
-                <div className="text-[11px] text-slate-400">Tenant-isolated institution</div>
+                <div className="font-semibold">Delhi Institute Admin</div>
+                <div className="text-[10.5px] text-[#71849A]">Tenant-isolated institution</div>
               </button>
 
               <button
@@ -224,12 +221,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
                   switchUser('VERIFIER');
                   setShowRoleMenu(false);
                 }}
-                className={`w-full text-left px-2 py-1.5 rounded hover:bg-[#1B3552] ${
-                  currentUser.role === 'VERIFIER' ? 'bg-[#2457A7] text-white font-medium' : 'text-slate-200'
+                className={`w-full text-left px-2.5 py-1.5 rounded-md transition-colors cursor-pointer ${
+                  currentUser.role === 'VERIFIER' ? 'bg-[#EAF4FF] text-[#1673D1] font-semibold' : 'text-[#40566E] hover:bg-[#F4F8FC]'
                 }`}
               >
-                <div>Third-Party Verifier</div>
-                <div className="text-[11px] text-slate-400">Employer public verification</div>
+                <div className="font-semibold">Third-Party Verifier</div>
+                <div className="text-[10.5px] text-[#71849A]">Employer public verification</div>
               </button>
 
               <button
@@ -237,12 +234,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate, collaps
                   switchUser('STUDENT');
                   setShowRoleMenu(false);
                 }}
-                className={`w-full text-left px-2 py-1.5 rounded hover:bg-[#1B3552] ${
-                  currentUser.role === 'STUDENT' ? 'bg-[#2457A7] text-white font-medium' : 'text-slate-200'
+                className={`w-full text-left px-2.5 py-1.5 rounded-md transition-colors cursor-pointer ${
+                  currentUser.role === 'STUDENT' ? 'bg-[#EAF4FF] text-[#1673D1] font-semibold' : 'text-[#40566E] hover:bg-[#F4F8FC]'
                 }`}
               >
-                <div>Student (Sarthak Sharma)</div>
-                <div className="text-[11px] text-slate-400">Consent wallet access</div>
+                <div className="font-semibold">Student (Sarthak Sharma)</div>
+                <div className="text-[10.5px] text-[#71849A]">Consent wallet access</div>
               </button>
             </div>
           </div>

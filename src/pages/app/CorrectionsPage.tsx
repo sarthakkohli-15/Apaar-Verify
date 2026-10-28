@@ -65,7 +65,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
               Ingestion Correction Queue
             </h1>
             {pendingCount > 0 && (
-              <span className="text-xs font-semibold bg-[#FFF3E0] text-[#C17B20] px-2.5 py-0.5 rounded border border-[#C17B20]/30 font-mono">
+              <span className="text-xs font-semibold bg-[#FFF3E0] text-[#C17B20] px-2.5 py-0.5 rounded-md border border-[#C17B20]/30 font-mono">
                 {pendingCount} Pending Resolution
               </span>
             )}
@@ -77,7 +77,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
 
         <button
           onClick={() => navigate('/app/uploads')}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white hover:bg-[#F4F6F9] text-[#172536] border border-[#D5DEE8] text-[13px] font-medium rounded transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white hover:bg-[#F4F6F9] text-[#172536] border border-[#D5DEE8] text-[13px] font-medium rounded-md transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-3.5 h-3.5 text-[#59697C]" />
           <span>Back to Upload Wizard</span>
@@ -85,7 +85,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
       </div>
 
       {/* Main Surface: Filter Toolbar + Full-Width Table */}
-      <div className="bg-white border border-[#D5DEE8] rounded shadow-xs overflow-hidden">
+      <div className="bg-white border border-[#D5DEE8] rounded-md shadow-xs overflow-hidden">
         {/* Integrated Filter Bar */}
         <div className="p-3.5 border-b border-[#D5DEE8] flex flex-wrap items-center justify-between gap-3 bg-[#FBFDFE]">
           <div className="relative flex-1 min-w-[260px] max-w-md">
@@ -95,7 +95,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
               placeholder="Filter by candidate name, field, error code, or record ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 text-[13px] rounded border border-[#D5DEE8] bg-white text-[#172536] placeholder-[#8A9BA8] focus:border-[#2457A7] focus:outline-none"
+              className="w-full pl-9 pr-3 py-1.5 text-[13px] rounded-md border border-[#D5DEE8] bg-white text-[#172536] placeholder-[#8A9BA8] focus:border-[#1673D1] focus:outline-none"
             />
           </div>
 
@@ -104,7 +104,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="text-[13px] rounded border border-[#D5DEE8] px-2.5 py-1.5 bg-white text-[#172536] focus:border-[#2457A7] focus:outline-none"
+              className="text-[13px] rounded-md border border-[#D5DEE8] px-2.5 py-1.5 bg-white text-[#172536] focus:border-[#1673D1] focus:outline-none"
             >
               <option value="ALL">All Statuses ({corrections.length})</option>
               <option value="PENDING">Pending Only ({pendingCount})</option>
@@ -147,7 +147,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
                   <td className="py-3 px-4 font-mono text-[#16805D] font-semibold">{item.suggestedValue}</td>
                   <td className="py-3 px-4 text-center">
                     <span
-                      className={`text-[11px] font-semibold px-2 py-0.5 rounded border ${
+                      className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border ${
                         item.status === 'CORRECTED'
                           ? 'bg-[#E8F5E9] text-[#16805D] border-[#16805D]/30'
                           : item.status === 'REJECTED'
@@ -163,7 +163,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => handleApplyFix(item)}
-                          className="px-2.5 py-1 bg-[#2457A7] hover:bg-[#3169B5] text-white rounded text-[12px] font-medium transition-colors"
+                          className="px-2.5 py-1 bg-[#1673D1] hover:bg-[#105CB0] text-white rounded-md text-[12px] font-medium transition-colors cursor-pointer shadow-2xs"
                           title="Apply suggested fix"
                         >
                           Apply Fix
@@ -173,14 +173,14 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
                             setEditModalItem(item);
                             setCustomValue(item.suggestedValue);
                           }}
-                          className="p-1 text-[#59697C] hover:text-[#2457A7] hover:bg-[#F4F6F9] rounded border border-transparent hover:border-[#D5DEE8]"
+                          className="p-1 text-[#59697C] hover:text-[#1673D1] hover:bg-[#F4F6F9] rounded-md border border-transparent hover:border-[#D5DEE8] cursor-pointer"
                           title="Edit custom value"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleReject(item)}
-                          className="p-1 text-[#59697C] hover:text-[#C43D43] hover:bg-[#FFEBEE] rounded border border-transparent hover:border-[#C43D43]/20"
+                          className="p-1 text-[#59697C] hover:text-[#C43D43] hover:bg-[#FFEBEE] rounded-md border border-transparent hover:border-[#C43D43]/20 cursor-pointer"
                           title="Reject row permanently"
                         >
                           <XCircle className="w-3.5 h-3.5" />
@@ -208,7 +208,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
       {/* Custom Edit Modal */}
       {editModalItem && (
         <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded max-w-md w-full p-6 shadow-xl border border-[#D5DEE8]">
+          <div className="bg-white rounded-md max-w-md w-full p-6 shadow-xl border border-[#D5DEE8]">
             <h3 className="text-[18px] font-semibold text-[#172536] mb-1">
               Edit Value for {editModalItem.studentName}
             </h3>
@@ -226,7 +226,7 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
                   required
                   value={customValue}
                   onChange={(e) => setCustomValue(e.target.value)}
-                  className="w-full p-2 text-[13px] rounded border border-[#D5DEE8] font-mono text-[#172536] focus:border-[#2457A7] focus:outline-none"
+                  className="w-full p-2 text-[13px] rounded-md border border-[#D5DEE8] font-mono text-[#172536] focus:border-[#1673D1] focus:outline-none"
                 />
               </div>
 
@@ -234,13 +234,13 @@ export const CorrectionsPage: React.FC<{ navigate: (path: string) => void }> = (
                 <button
                   type="button"
                   onClick={() => setEditModalItem(null)}
-                  className="px-3 py-1.5 text-[13px] text-[#59697C] hover:bg-[#F4F6F9] rounded border border-[#D5DEE8]"
+                  className="px-3 py-1.5 text-[13px] text-[#59697C] hover:bg-[#F4F6F9] rounded-md border border-[#D5DEE8] cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-[#2457A7] text-white text-[13px] font-medium rounded hover:bg-[#3169B5]"
+                  className="px-4 py-1.5 bg-[#1673D1] text-white text-[13px] font-medium rounded-md hover:bg-[#105CB0] cursor-pointer shadow-xs"
                 >
                   Save & Validate
                 </button>

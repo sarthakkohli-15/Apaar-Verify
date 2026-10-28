@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { SecurityBadge } from '../common/SecurityBadge';
+import { Button } from '../common/Button';
 import {
   Bell,
   Search,
@@ -14,6 +15,7 @@ import {
   ChevronRight,
   Menu,
   ExternalLink,
+  Building2,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -63,45 +65,64 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate, collapsed
     : 'Student';
 
   return (
-    <header className="h-14 bg-white border-b border-[#D5DEE8] px-5 flex items-center justify-between gap-4 sticky top-0 z-20">
+    <header
+      className="h-16 bg-white border-b border-[#DCE7F2] px-5 flex items-center justify-between gap-4 sticky top-0 z-20 shadow-2xs"
+      style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}
+    >
       {/* Left: Collapse toggle, breadcrumb, page context */}
       <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1 rounded text-[#59697C] hover:text-[#172536] hover:bg-slate-100 transition-colors"
+          className="p-1.5 rounded-lg text-[#71849A] hover:text-[#17324F] hover:bg-[#F4F8FC] transition-colors cursor-pointer"
           title="Toggle Navigation"
         >
-          <Menu className="w-4 h-4" />
+          <Menu className="w-4.5 h-4.5" />
         </button>
 
-        <div className="flex items-center gap-1.5 text-[13px] text-[#59697C] truncate">
-          <span className="text-[#59697C]">Portal</span>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-          <span className="font-semibold text-[#172536] truncate">{getBreadcrumb()}</span>
+        <div className="flex items-center gap-2 text-[13.5px] text-[#71849A] truncate">
+          <span className="hover:text-[#17324F] font-semibold text-[#1673D1] cursor-pointer" onClick={() => navigate('/app/overview')}>
+            True-Trace
+          </span>
+          <ChevronRight className="w-3.5 h-3.5 text-[#71849A] shrink-0" />
+          <span className="font-bold text-[#17324F] truncate">{getBreadcrumb()}</span>
         </div>
       </div>
 
       {/* Center: Search input */}
       <div className="hidden md:flex items-center flex-1 max-w-sm mx-4">
         <div className="relative w-full">
-          <Search className="w-4 h-4 text-[#59697C] absolute left-3 top-2.5" />
+          <Search className="w-4 h-4 text-[#71849A] absolute left-3 top-2.5" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search students, institutions, or alerts..."
-            className="w-full pl-9 pr-3 py-1.5 text-[13px] rounded border border-[#D5DEE8] bg-[#F4F6F9] focus:bg-white focus:outline-none focus:border-[#2457A7] text-[#172536]"
+            className="w-full pl-9 pr-3 py-1.5 text-[13px] rounded-md border border-[#DCE7F2] bg-[#F4F8FC] focus:bg-white focus:outline-none focus:border-[#1673D1] text-[#17324F] transition-all"
           />
         </div>
       </div>
 
       {/* Right: Tenant/Role tag, Public verify, Notifications, Profile */}
       <div className="flex items-center gap-3">
+        {/* Register Institution Quick Shortcut */}
+        <div className="hidden xl:block">
+          <Button
+            variant="outline"
+            size="xs"
+            icon={<Building2 className="w-3.5 h-3.5" />}
+            iconPosition="left"
+            onClick={() => navigate('/institution/register')}
+            className="bg-[#EAF4FF] hover:bg-[#D4E8FC] border-[#C5DCFA]"
+          >
+            Register Institution
+          </Button>
+        </div>
+
         {/* Current Role & Scope Tag */}
-        <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded bg-[#F4F6F9] border border-[#D5DEE8] text-[12px]">
-          <span className="w-2 h-2 rounded-full bg-[#16805D]" />
-          <span className="text-[#59697C]">Role:</span>
-          <span className="font-semibold text-[#172536] truncate max-w-[200px]" title={roleDisplay}>
+        <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-lg bg-[#F8FAFC] border border-[#DCE7F2] text-[12px]">
+          <span className="w-2 h-2 rounded-full bg-[#16845B]" />
+          <span className="text-[#71849A]">Role:</span>
+          <span className="font-bold text-[#17324F] truncate max-w-[200px]" title={roleDisplay}>
             {roleDisplay}
           </span>
         </div>
@@ -130,30 +151,30 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate, collapsed
         {/* Public Verifier Link */}
         <button
           onClick={() => navigate('/verify')}
-          className="hidden sm:flex items-center gap-1 text-[13px] text-[#59697C] hover:text-[#2457A7] px-2 py-1 rounded transition-colors"
+          className="hidden sm:flex items-center gap-1 text-[13px] font-medium text-[#40566E] hover:text-[#1673D1] px-2 py-1 rounded-lg transition-colors cursor-pointer"
         >
           <span>Verify QR</span>
-          <ExternalLink className="w-3 h-3" />
+          <ExternalLink className="w-3.5 h-3.5 text-[#1673D1]" />
         </button>
 
         {/* Notifications */}
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="p-1.5 rounded text-[#59697C] hover:text-[#172536] hover:bg-slate-100 relative transition-colors"
+            className="p-2 rounded-lg text-[#71849A] hover:text-[#17324F] hover:bg-[#F4F8FC] relative transition-colors cursor-pointer"
             title="Notifications"
           >
-            <Bell className="w-4 h-4" />
+            <Bell className="w-4.5 h-4.5" />
             {unreadAlerts.length > 0 && (
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#C43D43]" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#C53D45]" />
             )}
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-md border border-[#D5DEE8] p-3 z-50 text-xs">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D5DEE8]">
-                <span className="font-semibold text-[#172536]">System Alerts</span>
-                <span className="text-[11px] text-[#C43D43] font-semibold">
+            <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-[#DCE7F2] p-3 z-50 text-xs">
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#DCE7F2]">
+                <span className="font-bold text-[#17324F]">System Alerts</span>
+                <span className="text-[11px] text-[#C53D45] font-bold">
                   {unreadAlerts.length} Unresolved
                 </span>
               </div>
@@ -166,18 +187,18 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate, collapsed
                       navigate('/app/analysis');
                       setShowNotifications(false);
                     }}
-                    className="p-2 rounded hover:bg-[#F4F6F9] cursor-pointer border border-[#D5DEE8] transition-colors"
+                    className="p-2.5 rounded-lg hover:bg-[#F4F8FC] cursor-pointer border border-[#DCE7F2] transition-colors"
                   >
-                    <div className="flex items-center justify-between font-semibold text-[#172536]">
+                    <div className="flex items-center justify-between font-bold text-[#17324F]">
                       <span className="truncate">{alert.title}</span>
-                      <span className="text-[11px] text-[#C43D43] font-mono">Score {alert.severity}</span>
+                      <span className="text-[11px] text-[#C53D45] font-mono">Score {alert.severity}</span>
                     </div>
-                    <p className="text-[11px] text-[#59697C] mt-0.5 line-clamp-2">{alert.summary}</p>
+                    <p className="text-[11px] text-[#40566E] mt-0.5 line-clamp-2">{alert.summary}</p>
                   </div>
                 ))}
 
                 {unreadAlerts.length === 0 && (
-                  <div className="text-center py-4 text-[#59697C]">No open alerts</div>
+                  <div className="text-center py-4 text-[#71849A]">No open alerts</div>
                 )}
               </div>
             </div>

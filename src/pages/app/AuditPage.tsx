@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { AuditEvent, AuditCheckpoint } from '../../types';
+import { Button } from '../../components/common/Button';
 import {
   ShieldCheck,
   RotateCcw,
@@ -55,10 +56,10 @@ export const AuditPage: React.FC<{ navigate: (path: string) => void }> = ({ navi
         <div>
           <div className="flex items-center gap-3">
             <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
-              Module 3 — Multi-Witness Tamper-Evident Audit Ledger
+              Tamper-Evident Audit Verification Ledger
             </h1>
-            <span className="text-xs font-semibold bg-[#10243A] text-white px-2.5 py-0.5 rounded font-mono">
-              Layer 6 Defense
+            <span className="text-xs font-semibold bg-[#10243A] text-white px-2.5 py-0.5 rounded-[4px] font-mono">
+              Audit Integrity
             </span>
           </div>
           <p className="text-[14px] text-[#59697C] mt-1">
@@ -66,18 +67,19 @@ export const AuditPage: React.FC<{ navigate: (path: string) => void }> = ({ navi
           </p>
         </div>
 
-        <button
+        <Button
           onClick={handleRunVerification}
-          disabled={isVerifying}
-          className="px-4 py-2 bg-[#16805D] hover:bg-[#136c4f] text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
+          loading={isVerifying}
+          variant="success"
+          size="md"
+          icon={<ShieldCheck className="w-4 h-4" />}
         >
-          <ShieldCheck className="w-4 h-4" />
-          <span>{isVerifying ? 'Hashing Ledger...' : 'Verify Cryptographic Integrity'}</span>
-        </button>
+          {isVerifying ? 'Hashing Ledger...' : 'Verify Cryptographic Integrity'}
+        </Button>
       </div>
 
       {/* Two-Stage Tampering Demo Control Section */}
-      <div className="bg-white border border-[#D5DEE8] rounded shadow-xs p-5 space-y-4">
+      <div className="bg-white border border-[#D5DEE8] rounded-[4px] shadow-xs p-5 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#D5DEE8]">
           <div>
             <h2 className="text-[15px] font-semibold text-[#172536] flex items-center gap-2">
@@ -91,27 +93,28 @@ export const AuditPage: React.FC<{ navigate: (path: string) => void }> = ({ navi
 
           <div className="flex items-center gap-2">
             {auditTamperedType !== 'NONE' && (
-              <span className="text-[12px] font-semibold px-2.5 py-1 rounded bg-[#FFEBEE] text-[#C43D43] border border-[#C43D43]/30 font-mono">
+              <span className="text-[12px] font-semibold px-2.5 py-1 rounded-[4px] bg-[#FFEBEE] text-[#C43D43] border border-[#C43D43]/30 font-mono">
                 SIMULATION ACTIVE: {auditTamperedType}
               </span>
             )}
-            <button
+            <Button
               onClick={restoreAuditBaseline}
-              className="px-3 py-1.5 bg-white hover:bg-[#F4F6F9] text-[#172536] text-[13px] font-medium rounded border border-[#D5DEE8] flex items-center gap-1.5 transition-colors"
+              variant="secondary"
+              size="sm"
+              icon={<RotateCcw className="w-3.5 h-3.5 text-[#59697C]" />}
             >
-              <RotateCcw className="w-3.5 h-3.5 text-[#59697C]" />
-              <span>Restore Baseline Ledger</span>
-            </button>
+              Restore Baseline Ledger
+            </Button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Scenario A */}
-          <div className="p-3.5 rounded border border-[#D5DEE8] bg-[#FBFDFE] flex flex-col justify-between">
+          <div className="p-3.5 rounded-[4px] border border-[#D5DEE8] bg-[#FBFDFE] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-[13px] text-[#172536]">Scenario A: Single-Record DB Edit</span>
-                <span className="text-[11px] bg-[#FFEBEE] text-[#C43D43] px-2 py-0.5 rounded border border-[#C43D43]/20 font-mono">
+                <span className="text-[11px] bg-[#FFEBEE] text-[#C43D43] px-2 py-0.5 rounded-[4px] border border-[#C43D43]/20 font-mono">
                   Naive Modification
                 </span>
               </div>
@@ -119,20 +122,24 @@ export const AuditPage: React.FC<{ navigate: (path: string) => void }> = ({ navi
                 Modifies payload of Event EVT-1003 directly in the database. The local SHA-256 hash chain immediately breaks at that exact block.
               </p>
             </div>
-            <button
-              onClick={simulateSingleRecordTampering}
-              className="mt-3 w-full py-1.5 bg-[#C43D43] hover:bg-[#b0353a] text-white rounded text-[13px] font-medium transition-colors"
-            >
-              Simulate Single-Record Tampering
-            </button>
+            <div className="mt-3">
+              <Button
+                onClick={simulateSingleRecordTampering}
+                variant="destructive"
+                size="sm"
+                fullWidth
+              >
+                Simulate Single-Record Tampering
+              </Button>
+            </div>
           </div>
 
           {/* Scenario B */}
-          <div className="p-3.5 rounded border border-[#D5DEE8] bg-[#FBFDFE] flex flex-col justify-between">
+          <div className="p-3.5 rounded-[4px] border border-[#D5DEE8] bg-[#FBFDFE] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-[13px] text-[#172536]">Scenario B: Sophisticated Full-Chain Rewrite</span>
-                <span className="text-[11px] bg-[#FFF3E0] text-[#C17B20] px-2 py-0.5 rounded border border-[#C17B20]/20 font-mono">
+                <span className="text-[11px] bg-[#FFF3E0] text-[#C17B20] px-2 py-0.5 rounded-[4px] border border-[#C17B20]/20 font-mono">
                   Chain Forgery
                 </span>
               </div>
@@ -140,12 +147,16 @@ export const AuditPage: React.FC<{ navigate: (path: string) => void }> = ({ navi
                 Attacker recalculates all subsequent local hashes to make the chain appear valid. Local checks pass, but comparison against external witness receipts exposes the forgery.
               </p>
             </div>
-            <button
-              onClick={simulateFullChainRewrite}
-              className="mt-3 w-full py-1.5 bg-[#10243A] hover:bg-[#0B1728] text-white rounded text-[13px] font-medium transition-colors"
-            >
-              Simulate Full-Chain Rewrite
-            </button>
+            <div className="mt-3">
+              <Button
+                onClick={simulateFullChainRewrite}
+                variant="dark"
+                size="sm"
+                fullWidth
+              >
+                Simulate Full-Chain Rewrite
+              </Button>
+            </div>
           </div>
         </div>
       </div>

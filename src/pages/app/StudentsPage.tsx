@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Student } from '../../types';
+import { Button } from '../../components/common/Button';
 import {
   Users,
   Search,
@@ -87,34 +88,38 @@ export const StudentsPage: React.FC<{ navigate: (path: string) => void }> = ({ n
         </div>
 
         <div className="flex items-center gap-2">
-          <button
+          <Button
+            variant="secondary"
+            size="md"
+            icon={<UploadCloud className="w-4 h-4 text-[#1673D1]" />}
+            iconPosition="left"
             onClick={() => navigate('/app/uploads')}
-            className="px-3.5 py-2 bg-white border border-[#D5DEE8] hover:bg-[#F4F6F9] text-[#172536] text-[13.5px] font-medium rounded transition-colors flex items-center gap-1.5"
           >
-            <UploadCloud className="w-4 h-4 text-[#2457A7]" />
-            <span>Upload CSV</span>
-          </button>
+            Upload CSV
+          </Button>
 
-          <button
+          <Button
+            variant="primary"
+            size="md"
+            icon={<Download className="w-4 h-4" />}
+            iconPosition="left"
             onClick={handleExport}
-            className="px-3.5 py-2 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13.5px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
             title="Exports with canary tokens for Leak Tracer evaluation"
           >
-            <Download className="w-4 h-4" />
-            <span>Export with Canaries</span>
-          </button>
+            Export with Canaries
+          </Button>
         </div>
       </div>
 
       {exportNotice && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded text-[13px] text-[#16805D] flex items-center justify-between">
+        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-md text-[13px] text-[#16805D] flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 shrink-0" />
             <span>{exportNotice}</span>
           </div>
           <button
             onClick={() => navigate('/app/leak-tracer')}
-            className="font-semibold underline ml-4 hover:opacity-80"
+            className="font-semibold underline ml-4 hover:opacity-80 cursor-pointer"
           >
             Open Leak Tracer
           </button>
@@ -122,7 +127,7 @@ export const StudentsPage: React.FC<{ navigate: (path: string) => void }> = ({ n
       )}
 
       {/* Main Full-Width Table Surface */}
-      <div className="bg-white border border-[#D5DEE8] rounded p-5 space-y-4">
+      <div className="bg-white border border-[#D5DEE8] rounded-md p-5 space-y-4">
         {/* Filter Controls Row */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#D5DEE8]">
           <div className="relative flex-1 max-w-md">

@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { SecurityBadge } from '../../components/common/SecurityBadge';
+import { Button } from '../../components/common/Button';
 import {
   Building2,
   Users,
@@ -78,19 +79,21 @@ export const OverviewPage: React.FC<{ navigate: (path: string) => void }> = ({ n
         </div>
 
         <div className="flex items-center gap-2">
-          <button
+          <Button
+            variant="primary"
+            size="md"
+            loading={isScanning}
+            icon={<ArrowRight className="w-4 h-4" />}
+            iconPosition="right"
             onClick={handleRunAnalysis}
-            disabled={isScanning}
-            className="px-4 py-2 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[14px] font-medium rounded transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
           >
-            <span>{isScanning ? 'Running Analysis...' : 'Run Analysis'}</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+            {isScanning ? 'Running Analysis...' : 'Run Analysis'}
+          </Button>
         </div>
       </div>
 
       {/* KPI Section: Shared horizontal strip with subtle vertical dividers (No individual floating cards) */}
-      <div className="bg-white border border-[#D5DEE8] rounded divide-y sm:divide-y-0 sm:divide-x divide-[#D5DEE8] grid grid-cols-1 sm:grid-cols-4">
+      <div className="bg-white border border-[#D5DEE8] rounded-md divide-y sm:divide-y-0 sm:divide-x divide-[#D5DEE8] grid grid-cols-1 sm:grid-cols-4">
         {/* Metric 1 */}
         <div className="p-4 sm:p-5">
           <div className="text-[12.5px] text-[#59697C] font-normal">Approved Institutions</div>

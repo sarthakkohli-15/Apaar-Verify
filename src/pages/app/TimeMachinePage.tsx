@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { Button } from '../../components/common/Button';
 import {
   Play,
   Pause,
@@ -90,9 +91,9 @@ export const TimeMachinePage: React.FC<{ navigate: (path: string) => void }> = (
         <div>
           <div className="flex items-center gap-3">
             <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
-              Module 6 — Event-Sourced Historical Time Machine
+              Historical Time Machine
             </h1>
-            <span className="text-xs font-semibold bg-[#10243A] text-white px-2.5 py-0.5 rounded font-mono">
+            <span className="text-xs font-semibold bg-[#10243A] text-white px-2.5 py-0.5 rounded-md font-mono">
               Temporal Ledger
             </span>
           </div>
@@ -104,7 +105,7 @@ export const TimeMachinePage: React.FC<{ navigate: (path: string) => void }> = (
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="px-3.5 py-1.5 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
+            className="px-3.5 py-1.5 bg-[#1673D1] hover:bg-[#105CB0] text-white text-[13px] font-medium rounded-md transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer"
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             <span>{isPlaying ? 'Pause Replay' : 'Play Timeline Replay'}</span>
@@ -115,7 +116,7 @@ export const TimeMachinePage: React.FC<{ navigate: (path: string) => void }> = (
               setIsPlaying(false);
               setCurrentIndex(0);
             }}
-            className="p-1.5 text-[#59697C] hover:bg-[#F4F6F9] rounded border border-[#D5DEE8]"
+            className="p-1.5 text-[#59697C] hover:bg-[#F4F6F9] rounded-md border border-[#D5DEE8] cursor-pointer"
             title="Reset to genesis snapshot"
           >
             <RotateCcw className="w-4 h-4" />

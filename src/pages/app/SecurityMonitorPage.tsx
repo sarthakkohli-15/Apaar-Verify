@@ -6,6 +6,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { SecurityBadge } from '../../components/common/SecurityBadge';
+import { Button } from '../../components/common/Button';
 import { Radio } from 'lucide-react';
 
 export const SecurityMonitorPage: React.FC<{ navigate: (path: string) => void }> = ({ navigate }) => {
@@ -81,9 +82,9 @@ export const SecurityMonitorPage: React.FC<{ navigate: (path: string) => void }>
         <div>
           <div className="flex items-center gap-3">
             <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
-              Module 4 — Six-Layer Cybersecurity Operations Console
+              Cybersecurity Operations Console
             </h1>
-            <span className="text-xs font-semibold bg-[#10243A] text-white px-2.5 py-0.5 rounded font-mono">
+            <span className="text-xs font-semibold bg-[#10243A] text-white px-2.5 py-0.5 rounded-[4px] font-mono">
               Defense-in-Depth
             </span>
           </div>
@@ -92,13 +93,14 @@ export const SecurityMonitorPage: React.FC<{ navigate: (path: string) => void }>
           </p>
         </div>
 
-        <button
+        <Button
           onClick={() => navigate('/app/attack-simulator')}
-          className="px-4 py-2 bg-[#C43D43] hover:bg-[#b0353a] text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
+          variant="destructive"
+          size="md"
+          icon={<Radio className="w-4 h-4" />}
         >
-          <Radio className="w-4 h-4" />
-          <span>Launch Red Team Attack Simulator</span>
-        </button>
+          Launch Red Team Attack Simulator
+        </Button>
       </div>
 
       {/* Automated Response Ladder Specification Bar */}

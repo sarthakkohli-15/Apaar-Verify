@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Institution, Course } from '../../types';
+import { Button } from '../../components/common/Button';
 import {
   Building2,
   Search,
@@ -80,18 +81,20 @@ export const InstitutionsPage: React.FC<{ navigate: (path: string) => void }> = 
           </p>
         </div>
 
-        <button
+        <Button
+          variant="dark"
+          size="md"
+          icon={<Plus className="w-4 h-4" />}
+          iconPosition="left"
           onClick={() => navigate('/institution/register')}
-          className="px-4 py-2 bg-[#10243A] hover:bg-[#0B1728] text-white text-[14px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
         >
-          <Plus className="w-4 h-4" />
-          <span>Register Institution</span>
-        </button>
+          Register Institution
+        </Button>
       </div>
 
       {/* Pending Approvals Strip (AICTE Admin View) */}
       {currentUser.role === 'AICTE_ADMIN' && pendingApprovals.length > 0 && (
-        <div className="bg-white border border-[#C17B20] rounded p-4 space-y-3">
+        <div className="bg-white border border-[#C17B20] rounded-md p-4 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-[#C17B20]" />
@@ -115,16 +118,17 @@ export const InstitutionsPage: React.FC<{ navigate: (path: string) => void }> = 
                   </div>
                 </div>
 
-                <button
+                <Button
+                  variant="primary"
+                  size="sm"
                   onClick={() => {
                     setReviewModalInst(inst);
                     setReviewDecision('APPROVED');
                     setReviewNote(`AICTE clearance verified. Account activated with College Admin credentials for ${inst.adminName}.`);
                   }}
-                  className="px-3 py-1 bg-[#2457A7] hover:bg-[#3169B5] text-white rounded text-[13px] font-medium transition-colors"
                 >
                   Review & Approve
-                </button>
+                </Button>
               </div>
             ))}
           </div>

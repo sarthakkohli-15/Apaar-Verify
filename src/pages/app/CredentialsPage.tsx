@@ -55,7 +55,7 @@ export const CredentialsPage: React.FC<{ navigate: (path: string) => void }> = (
             <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
               Verifiable Credential Issuance
             </h1>
-            <span className="text-xs font-semibold bg-[#E8F5E9] text-[#16805D] px-2.5 py-0.5 rounded border border-[#16805D]/30 font-mono">
+            <span className="text-xs font-semibold bg-[#E8F5E9] text-[#16805D] px-2.5 py-0.5 rounded-md border border-[#16805D]/30 font-mono">
               Privacy-Preserving
             </span>
           </div>
@@ -66,7 +66,7 @@ export const CredentialsPage: React.FC<{ navigate: (path: string) => void }> = (
 
         <button
           onClick={() => navigate('/verify')}
-          className="px-3.5 py-1.5 bg-[#2457A7] hover:bg-[#3169B5] text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs"
+          className="px-3.5 py-1.5 bg-[#1673D1] hover:bg-[#105CB0] text-white text-[13px] font-medium rounded-md transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer"
         >
           <span>Open Public Verifier</span>
           <ExternalLink className="w-3.5 h-3.5" />
@@ -74,14 +74,14 @@ export const CredentialsPage: React.FC<{ navigate: (path: string) => void }> = (
       </div>
 
       {issuedNotice && (
-        <div className="p-3 bg-[#E8F5E9] border border-[#16805D]/30 rounded text-[13px] text-[#16805D] flex items-center justify-between">
+        <div className="p-3 bg-[#E8F5E9] border border-[#16805D]/30 rounded-md text-[13px] text-[#16805D] flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-[#16805D] shrink-0" />
             <span>{issuedNotice}</span>
           </div>
           <button
             onClick={() => navigate('/verify')}
-            className="font-semibold underline ml-4 hover:opacity-80"
+            className="font-semibold underline ml-4 hover:opacity-80 cursor-pointer"
           >
             Test in Public Verifier →
           </button>
@@ -90,7 +90,7 @@ export const CredentialsPage: React.FC<{ navigate: (path: string) => void }> = (
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Left Column: Eligible Students List */}
-        <div className="lg:col-span-7 bg-white border border-[#D5DEE8] rounded shadow-xs p-5 space-y-3">
+        <div className="lg:col-span-7 bg-white border border-[#D5DEE8] rounded-md shadow-xs p-5 space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-[#D5DEE8]">
             <h3 className="text-[14px] font-semibold text-[#172536]">
               Eligible Enrolled Students ({students.length})
@@ -106,7 +106,7 @@ export const CredentialsPage: React.FC<{ navigate: (path: string) => void }> = (
                   key={stu.id}
                   onClick={() => handleIssueCredential(stu)}
                   className={`p-3 cursor-pointer transition-colors text-[13px] flex items-center justify-between ${
-                    isSelected ? 'bg-[#EBF1F8] border-l-4 border-l-[#2457A7]' : 'hover:bg-[#F9FAFC]'
+                    isSelected ? 'bg-[#EBF1F8] border-l-4 border-l-[#1673D1]' : 'hover:bg-[#F9FAFC]'
                   }`}
                 >
                   <div>
@@ -121,7 +121,7 @@ export const CredentialsPage: React.FC<{ navigate: (path: string) => void }> = (
 
                   <button
                     type="button"
-                    className="px-2.5 py-1 bg-white hover:bg-[#2457A7] hover:text-white text-[#172536] border border-[#D5DEE8] rounded text-[12px] font-medium transition-colors"
+                    className="px-2.5 py-1 bg-white hover:bg-[#1673D1] hover:text-white text-[#172536] border border-[#D5DEE8] rounded-md text-[12px] font-medium transition-colors cursor-pointer"
                   >
                     Issue QR
                   </button>

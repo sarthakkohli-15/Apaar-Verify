@@ -93,22 +93,22 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ navigate }) => {
 
   return (
     <div
-      className="min-h-screen bg-[#F4F6F9] text-[#172536] flex flex-col justify-between font-sans"
+      className="min-h-screen bg-[#F4F8FC] text-[#17324F] flex flex-col justify-between font-sans"
       style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}
     >
       {/* Header */}
-      <header className="py-3 px-6 lg:px-12 border-b border-[#D5DEE8] bg-white flex items-center justify-between">
+      <header className="py-3 px-6 lg:px-12 border-b border-[#DCE7F2] bg-white flex items-center justify-between sticky top-0 z-30 shadow-2xs">
         <div
           onClick={() => navigate('/')}
           className="cursor-pointer"
         >
           <ApaarLogo variant="dark" size="md" withSubtitle={true} />
         </div>
-        <div className="flex items-center gap-4 text-[13px]">
-          <button onClick={() => navigate('/institution/registration-status')} className="text-[#59697C] hover:text-[#2457A7]">
+        <div className="flex items-center gap-4 text-[13.5px]">
+          <button onClick={() => navigate('/institution/registration-status')} className="text-[#40566E] hover:text-[#1673D1] font-medium transition-colors cursor-pointer">
             Check Application Status
           </button>
-          <button onClick={() => navigate('/login')} className="text-[#2457A7] font-semibold hover:underline">
+          <button onClick={() => navigate('/login')} className="text-[#1673D1] font-semibold hover:underline cursor-pointer">
             Portal Sign In →
           </button>
         </div>
@@ -117,21 +117,21 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ navigate }) => {
       {/* Content */}
       <div className="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-8">
         {submittedRef ? (
-          <div className="bg-white border border-[#DCE3EB] rounded-xl p-8 shadow-xs text-center">
-            <div className="w-14 h-14 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white border border-[#DCE7F2] rounded-2xl p-8 shadow-xs text-center">
+            <div className="w-14 h-14 bg-[#E7F7EF] border border-[#A7E2C6] text-[#16845B] rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h1 className="text-xl font-bold text-slate-900">Registration Application Submitted</h1>
-            <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto leading-relaxed">
+            <h1 className="text-2xl font-bold text-[#17324F]">Registration Application Submitted</h1>
+            <p className="text-[13.5px] text-[#40566E] mt-1 max-w-md mx-auto leading-relaxed">
               Your application has been placed in the AICTE Scrutiny & Approval queue. An AICTE Regional Officer will verify institutional accreditation before activating your College Admin account.
             </p>
 
-            <div className="mt-6 p-4 bg-slate-50 border border-slate-200 rounded-lg max-w-md mx-auto text-left">
-              <div className="text-[11px] text-slate-500">Application Reference ID:</div>
-              <div className="text-base font-mono font-bold text-[#2457A7] mt-0.5">{submittedRef}</div>
-              <div className="mt-2 text-[11px] text-slate-600 flex items-center justify-between">
+            <div className="mt-6 p-4 bg-[#F8FAFC] border border-[#DCE7F2] rounded-xl max-w-md mx-auto text-left">
+              <div className="text-[11.5px] text-[#71849A]">Application Reference ID:</div>
+              <div className="text-base font-mono font-bold text-[#1673D1] mt-0.5">{submittedRef}</div>
+              <div className="mt-2 text-[12px] text-[#40566E] flex items-center justify-between">
                 <span>Current Status:</span>
-                <span className="font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                <span className="font-semibold text-[#B7791F] bg-[#FFF5DF] px-2.5 py-0.5 rounded border border-[#FAD79A]">
                   SUBMITTED · UNDER REVIEW
                 </span>
               </div>
@@ -140,29 +140,29 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ navigate }) => {
             <div className="mt-8 flex justify-center gap-3">
               <button
                 onClick={() => navigate('/app/institutions')}
-                className="px-5 py-2.5 bg-[#10243A] text-white rounded-lg text-xs font-semibold hover:bg-[#0B1728] transition-colors"
+                className="px-5 py-2.5 bg-[#1673D1] hover:bg-[#105CB0] text-white rounded-md text-[13px] font-semibold transition-colors cursor-pointer shadow-xs"
               >
                 Inspect AICTE Review Queue (Judge Demo)
               </button>
               <button
                 onClick={() => navigate('/')}
-                className="px-5 py-2.5 bg-white border border-[#DCE3EB] text-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 transition-colors"
+                className="px-5 py-2.5 bg-white border border-[#DCE7F2] text-[#40566E] hover:text-[#17324F] rounded-md text-[13px] font-semibold hover:bg-[#F4F8FC] transition-colors cursor-pointer"
               >
                 Return to Home
               </button>
             </div>
           </div>
         ) : (
-          <div className="bg-white border border-[#DCE3EB] rounded-xl p-6 sm:p-8 shadow-xs">
-            <div className="mb-6 pb-4 border-b border-[#DCE3EB]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#2457A7]/10 text-[#2457A7] rounded text-xs font-semibold mb-2">
+          <div className="bg-white border border-[#DCE7F2] rounded-2xl p-6 sm:p-8 shadow-xs">
+            <div className="mb-6 pb-4 border-b border-[#DCE7F2]">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#EAF4FF] text-[#1673D1] rounded-md text-[12px] font-semibold mb-2">
                 <Building2 className="w-3.5 h-3.5" />
                 <span>AICTE Institution Onboarding Workflow</span>
               </div>
-              <h1 className="text-2xl font-bold text-[#10243A] tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#17324F] tracking-tight">
                 Register AICTE-Approved Institution
               </h1>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-[13.5px] text-[#40566E] mt-1">
                 Colleges and polytechnics must register their permanent AICTE identifier to gain access to student APAAR data management.
               </p>
             </div>
@@ -378,7 +378,7 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ navigate }) => {
                     className="mt-0.5 rounded text-[#2457A7] focus:ring-[#2457A7]"
                   />
                   <span>
-                    I agree to the APAAR-VERIFY Platform Data Handling, PII Masking, and Cryptographic Audit Policies under AICTE regulations.
+                    I agree to the True-Trace Platform Data Handling, PII Masking, and Cryptographic Audit Policies under AICTE regulations.
                   </span>
                 </label>
 
@@ -387,7 +387,7 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ navigate }) => {
                     type="checkbox"
                     checked={formData.authorizedDeclaration}
                     onChange={(e) => setFormData({ ...formData, authorizedDeclaration: e.target.checked })}
-                    className="mt-0.5 rounded text-[#2457A7] focus:ring-[#2457A7]"
+                    className="mt-0.5 rounded text-[#1673D1] focus:ring-[#1673D1]"
                   />
                   <span>
                     I solemnly declare that I am legally authorized to submit institutional enrollment data on behalf of this institution.
@@ -399,16 +399,16 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ navigate }) => {
                 <button
                   type="button"
                   onClick={() => navigate('/')}
-                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                  className="px-4 py-2 text-[13px] font-semibold text-[#40566E] hover:bg-[#F4F8FC] rounded-md transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 bg-[#10243A] hover:bg-[#0B1728] text-white rounded-lg text-xs font-semibold transition-colors flex items-center gap-2 shadow-sm"
+                  className="px-6 py-2.5 bg-[#1673D1] hover:bg-[#105CB0] text-white rounded-md text-[13px] font-semibold transition-colors flex items-center gap-2 shadow-xs cursor-pointer"
                 >
                   <span>Submit Application for AICTE Approval</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#E06D10]" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </form>

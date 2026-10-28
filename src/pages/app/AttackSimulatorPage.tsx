@@ -6,6 +6,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { SecurityBadge } from '../../components/common/SecurityBadge';
+import { Button } from '../../components/common/Button';
 import {
   RotateCcw,
   Play,
@@ -65,14 +66,14 @@ export const AttackSimulatorPage: React.FC<{ navigate: (path: string) => void }>
   return (
     <div className="space-y-5" style={{ fontFamily: 'Calibri, "Segoe UI", Arial, sans-serif' }}>
       {/* Simulation Banner */}
-      <div className="p-3 bg-[#FFEBEE] border border-[#C43D43]/30 rounded text-[13px] text-[#C43D43] flex items-center justify-between">
+      <div className="p-3 bg-[#FFEBEE] border border-[#C43D43]/30 rounded-[4px] text-[13px] text-[#C43D43] flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ShieldAlert className="w-4 h-4 text-[#C43D43] shrink-0" />
           <span className="font-semibold">
             RED TEAM SIMULATION ENVIRONMENT: No live institutional or government databases are being contacted or impacted.
           </span>
         </div>
-        <span className="font-mono text-[11px] bg-white text-[#C43D43] px-2 py-0.5 rounded border border-[#C43D43]/30 font-semibold">
+        <span className="font-mono text-[11px] bg-white text-[#C43D43] px-2 py-0.5 rounded-[4px] border border-[#C43D43]/30 font-semibold">
           ISOLATED SANDBOX
         </span>
       </div>
@@ -84,7 +85,7 @@ export const AttackSimulatorPage: React.FC<{ navigate: (path: string) => void }>
             <h1 className="text-[26px] font-semibold text-[#172536] tracking-tight">
               Red Team Insider Attack Simulator
             </h1>
-            <span className="text-xs font-semibold bg-[#C43D43] text-white px-2.5 py-0.5 rounded font-mono">
+            <span className="text-xs font-semibold bg-[#C43D43] text-white px-2.5 py-0.5 rounded-[4px] font-mono">
               SIH Core Demo 3
             </span>
           </div>
@@ -94,32 +95,28 @@ export const AttackSimulatorPage: React.FC<{ navigate: (path: string) => void }>
         </div>
 
         <div className="flex items-center gap-2">
-          <button
+          <Button
             onClick={resetAttackSimulation}
-            className="px-3.5 py-1.5 bg-white hover:bg-[#F4F6F9] text-[#172536] text-[13px] font-medium rounded border border-[#D5DEE8] transition-colors flex items-center gap-1.5"
+            variant="secondary"
+            size="sm"
+            icon={<RotateCcw className="w-3.5 h-3.5 text-[#59697C]" />}
           >
-            <RotateCcw className="w-3.5 h-3.5 text-[#59697C]" />
-            <span>Reset Simulation</span>
-          </button>
+            Reset Simulation
+          </Button>
 
-          <button
+          <Button
             onClick={runAttackSimulationStep}
             disabled={attackSimulationStep >= 4}
-            className={`px-4 py-2 text-white text-[13px] font-medium rounded transition-colors flex items-center gap-1.5 shadow-xs ${
-              attackSimulationStep >= 4
-                ? 'bg-[#8A9BA8] cursor-not-allowed'
-                : 'bg-[#C43D43] hover:bg-[#b0353a]'
-            }`}
+            variant="destructive"
+            size="md"
+            icon={<Play className="w-3.5 h-3.5" />}
           >
-            <Play className="w-3.5 h-3.5" />
-            <span>
-              {attackSimulationStep === 0
-                ? 'Start Attack Simulation (Stage 1)'
-                : attackSimulationStep < 4
-                ? `Execute Stage ${attackSimulationStep + 1} Attack`
-                : 'Sequence Complete (Session Frozen)'}
-            </span>
-          </button>
+            {attackSimulationStep === 0
+              ? 'Start Attack Simulation (Stage 1)'
+              : attackSimulationStep < 4
+              ? `Execute Stage ${attackSimulationStep + 1} Attack`
+              : 'Sequence Complete (Session Frozen)'}
+          </Button>
         </div>
       </div>
 
